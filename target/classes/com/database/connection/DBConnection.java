@@ -1,27 +1,45 @@
 package com.database.connection;
 
-import java.sql.*; 
+import java.sql.*;
+
+import com.database.resources.DBType;
+import com.database.resources.DBUtilities;
 
 public class DBConnection {
 
-	public static void main(String[] args) throws SQLException {
+	private Connection connection;
+	private Statement statement;
+	private ResultSet resSet;
+	
+	public DBConnection() throws SQLException{
 		
-		String dbUrl = "jdbc:mysql://localhost:3306/world";
-		String username = "root";
-		String password = "database";
-		
-		Connection connection = null;
-		
-		try{
-			// 1. Get a connection to database
-			connection = DriverManager.getConnection(dbUrl, username, password);
-			System.out.println("Connection established to MYSQL Database.");
+		try {
 			
-		} catch (SQLException e){
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = DBUtilities.getConnection(DBType.MYSQLDB);
+			statement = connection.createStatement();
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			connection.close();
+		} finally{
+			
+			if(resSet != null){
+				resSet.close();
+			}
+			
+			if(statement != null){
+				statement.close();
+			}
+			
+			if(connection != null){
+				connection.close();
+			}
+			
 		}
+		
 		
 	}
 	
