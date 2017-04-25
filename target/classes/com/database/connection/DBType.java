@@ -1,4 +1,4 @@
-package com.database.resources;
+package com.database.connection;
 
 public enum DBType {
 

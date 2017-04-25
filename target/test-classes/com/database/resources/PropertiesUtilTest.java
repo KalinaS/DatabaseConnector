@@ -9,8 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import com.database.connection.ConnectionFactory;
 import com.database.connection.DBConnection;
-import com.database.resources.PropertyUtil;
+import com.database.connection.DBType;
+import com.database.util.PropertyUtil;
 
 /**
  * 
@@ -23,7 +25,7 @@ public class PropertiesUtilTest {
 	@Test
 	public void isPropertyFileEmpty() {
 
-		assertFalse("File is not empty", PropertyUtil.isProperiesLoaded());
+		assertTrue(PropertyUtil.isProperiesLoaded());
 
 	}
 
@@ -40,17 +42,18 @@ public class PropertiesUtilTest {
 
 		assertEquals("root", PropertyUtil.getValue("mysqlUser"));
 		assertEquals("database", PropertyUtil.getValue("mysqlPass"));
-		assertEquals("jdbc:mysql://localhost:3306/world", PropertyUtil.getValue("mysqlUrl"));
+		assertEquals("jdbc:mysql://localhost:3306/sakila", PropertyUtil.getValue("mysqlUrl"));
 	}
 	
 	@Test
 	public void testConnection() throws IOException, SQLException{
-		DBUtilities.getConnection(DBType.MYSQLDB);
-		assertTrue();
+		
+		assertNotNull(ConnectionFactory.getConnection(DBType.MYSQLDB));
 	}
+
 	
-/*
-	@Rule
+
+/*	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
 	@Test
@@ -61,6 +64,6 @@ public class PropertiesUtilTest {
 		PropertyUtil.loadPropertyFile();
 		
 
-	}
-*/
+	}*/
+
 }
