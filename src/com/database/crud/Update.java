@@ -1,11 +1,17 @@
 package com.database.crud;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 public class Update extends Operation{
 
+	Update() throws SQLException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void doOperation() {
+	public void doOperation(String sql, Map<String, Object> operation) {
 		
 		
 		
