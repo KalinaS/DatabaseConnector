@@ -3,43 +3,42 @@ package com.database.crud;
 import java.sql.*;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import com.database.connection.DBConnection;
+
 public abstract class Operation {
+	
+	static Logger log = Logger.getLogger(DBConnection.class);
 
-	protected Connection connect;
-	protected PreparedStatement prepStmt;
+	protected static Connection connect;
+	protected static PreparedStatement updateParams;
+	
+	
+	public static void doOperation(String sql, Map<String, Object> parameters) throws SQLException {
 
-	private String sql;
-	private Map<String, Object> parameters;
+		int paramIndex = 1;
 
-	Operation(String sql) {
-		this.sql = sql;
-	}
+		try {
 
-	public void setParameters(Map<String, Object> params) {
-		parameters = params;
-	}
+			updateParams = connect.prepareStatement(sql);
 
-	{
-		try
+			for (Map.Entry<String, Object> p : parameters.entrySet()) {
 
-		{
-			prepStmt = connect.prepareStatement(sql);
+				updateParams.setString(paramIndex, p.getKey());
+				updateParams.setObject(paramIndex + 1, p.getValue());
+				paramIndex++;
+
+			}
+
 		} catch (SQLException e) {
-
-			e.getMessage();
-
+			
+			log.error(e.getMessage());
 		} finally {
-
-			if (prepStmt != null) {
-				try {
-					prepStmt.close();
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-				}
+			
+			if(updateParams != null){
+				updateParams.close();
 			}
 		}
 	}
-	// public abstract void doOperation(String sql, Map<String, Object>
-	// parameters) throws SQLException;
 }

@@ -2,8 +2,8 @@ package com.database.connection;
 
 import java.io.IOException;
 import java.sql.*;
-import com.database.crud.InsertValues;
-import com.database.crud.Read;
+import com.database.crud.InsertOperation;
+import com.database.crud.ReadOperation;
 import com.database.util.PropertyUtil;
 
 public class MysqlConnection implements CreateConnection{

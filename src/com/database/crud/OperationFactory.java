@@ -9,13 +9,13 @@ public class OperationFactory {
 		switch(operation){
 		
 		case INSERT :
-			return new InsertValues();
+			return new InsertOperation();
 			
 		case SELECT :
-			return new Read();
+			return new ReadOperation();
 			
 		case UPDATE:
-			return new Update();
+			return new UpdateOperation();
 			
 		default:
 			return null;
