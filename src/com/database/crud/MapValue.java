@@ -17,6 +17,14 @@ public class MapValue {
 		parameters.put(":extension", extension);
 	}
 	
+	public static boolean isParametersEmpty(){
+		if(parameters.isEmpty()){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 /*	public static Map getParamteres(){
 		return parameters;
 	}*/

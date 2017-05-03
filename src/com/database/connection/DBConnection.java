@@ -1,6 +1,10 @@
 package com.database.connection;
 
-import java.sql.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
@@ -12,35 +16,42 @@ public class DBConnection {
 	protected Statement statement;
 	protected ResultSet resSet;
 
-	public DBConnection() throws SQLException {
+	public DBConnection(){
 
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
-
-			connection = (Connection) ConnectionFactory.getConnection(DBType.MYSQLDB);
-			statement = connection.createStatement();
+			CreateConnection createConection = ConnectionFactory.getConnection(DBType.MYSQLDB);
+//			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "database");
+			connection = createConection.getConnection();
+			statement = createConection.getStatement();
 		
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+		} catch (ClassNotFoundException cnfe){
+			cnfe.printStackTrace();
+		} catch(IOException ioe){
+			ioe.getMessage();
+		}finally {
 
 			if (resSet != null) {
-				resSet.close();
+				try {
+					resSet.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
-			if (statement != null) {
-				statement.close();
-			}
-
-			if (connection != null) {
-				connection.close();
-			}
 
 		}
 
+	}
+	
+	public Connection getConnection(){
+		
+		return connection;
 	}
 
 }

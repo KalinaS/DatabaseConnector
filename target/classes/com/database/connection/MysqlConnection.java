@@ -8,27 +8,44 @@ import com.database.util.PropertyUtil;
 
 public class MysqlConnection implements CreateConnection{
 	
-	private static Connection connection;
 	private static Statement statement;
+//	private static DBConnection dbc = new DBConnection();
+	private static Connection connection;
 	
 	private String url;
 	private String user;
 	private String password;
 	
-	MysqlConnection() throws IOException, SQLException{
-		
-		this.url = PropertyUtil.getValue("mysqlUrl");
-		this.user = PropertyUtil.getValue("mysqlUser");
-		this.password = PropertyUtil.getValue("mysqlPass");	
-		
-		statement = connection.createStatement();
+	public MysqlConnection(){
+		try {
+			this.url = PropertyUtil.getValue("mysqlUrl");
+			this.user = PropertyUtil.getValue("mysqlUser");
+			this.password = PropertyUtil.getValue("mysqlPass");	
+			
+			connection = DriverManager.getConnection(url, user, password);
+				
+			statement = connection.createStatement();
+		} catch (SQLException sqle) {
+			
+			sqle.printStackTrace();
+		} catch (IOException ioe){
+			ioe.printStackTrace();
+		} 
 	}
 
 
 	public Connection getConnection() throws SQLException, IOException {
 		
-		return DriverManager.getConnection(url, user, password);
+//		return DriverManager.getConnection(url, user, password);
+		return connection;
 	}
+	
+	public Statement getStatement() throws SQLException, IOException {
+		
+//		return DriverManager.getConnection(url, user, password);
+		return statement;
+	}
+
 
 
 	/*public void insertValues() throws SQLException{

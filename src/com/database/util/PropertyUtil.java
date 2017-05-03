@@ -23,13 +23,13 @@ public class PropertyUtil {
 	private static String PROPERTY_FILE = "/resources/settings.properties";
 	
 	
-	protected static boolean isProperiesLoaded() {
+	public static boolean isProperiesLoaded() {
 
 		return prop != null && !prop.isEmpty();
 
 	}
 
-	protected static void loadPropertyFile() throws IOException {
+	public static void loadPropertyFile() throws IOException {
 
 		try {		
 			prop = new Properties();
