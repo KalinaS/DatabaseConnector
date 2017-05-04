@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.database.crud.InsertOperation;
 import com.database.crud.MapValue;
 import com.database.crud.Operation;
+import com.database.crud.ReadOperation;
 import com.database.crud.SqlQuery;
 
 public class OperationTest implements SqlQuery{
@@ -51,8 +52,9 @@ public class OperationTest implements SqlQuery{
 	}
 	
 	@Test
-	public void testReadOperation(){
+	public void testReadOperation() throws SQLException{
 		
+		ReadOperation.doOperation(SELECT_BY_FILEID, parameters);
 	}
 
 }

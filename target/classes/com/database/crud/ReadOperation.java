@@ -12,7 +12,7 @@ public class ReadOperation extends Operation implements SqlQuery{
 
 	public void executeSelect() throws SQLException, IOException{
 		
-		MapValue.selectByName();
+		//MapValue.selectByName();
 		doOperation(SELECT_BY_FILEID, MapValue.parameters);
 	}
 	

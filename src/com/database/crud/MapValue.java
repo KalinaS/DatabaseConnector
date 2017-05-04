@@ -1,14 +1,13 @@
 package com.database.crud;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.HashMap; 
 import java.util.Map;
 
 public class MapValue {
 
 	public static Map<String, Object> parameters = new HashMap();
 	
+	//insert values into map
 	public static void insert(int fileId, int parentId, String name, String path, String extension){
 		parameters.put(":fileID", fileId);
 		parameters.put(":parentID", parentId);
@@ -17,6 +16,7 @@ public class MapValue {
 		parameters.put(":extension", extension);
 	}
 	
+	//check if map is empty
 	public static boolean isParametersEmpty(){
 		if(parameters.isEmpty()){
 			return true;
@@ -34,8 +34,8 @@ public class MapValue {
 		parameters.get(":name");
 	}
 	
-	public static void selectByFileId(){
+/*	public static void selectByFileId(){
 		parameters.get(":fileID");
-	}
+	}*/
 
 }

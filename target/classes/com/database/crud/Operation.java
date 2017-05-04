@@ -17,17 +17,18 @@ public abstract class Operation {
 	static DBConnection dbc = new DBConnection();
 	private static Connection connection;
 	protected static PreparedStatement updateParams;
+	protected static ResultSet rs;
 	
 	public Operation() throws SQLException, IOException, ClassNotFoundException{
 		BasicConfigurator.configure();
 	}
-	
+
+	//method for executing queries
 	public static void doOperation(String sql, Map<String, Object> parameters) throws SQLException{
 
-		int paramIndex = 1;
+		//int paramIndex = 1;
 
 		try {
-			String querry = sql;
 			Statement statement = null;
 
 			connection = dbc.getConnection();
@@ -40,7 +41,7 @@ public abstract class Operation {
 				paramIndex++;
 
 			}*/
-			statement.executeQuery(querry);
+			rs = statement.executeQuery(sql);
 
 		} catch (SQLException e) {
 			
