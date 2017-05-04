@@ -25,6 +25,7 @@ public class ConnectionToDatabasetest {
 
 	Connection conn = null;
 	Statement stmt = null;
+	ResultSet rs = null;
 	
 	int affectedRows;
 	
@@ -46,48 +47,57 @@ public class ConnectionToDatabasetest {
 		
 	}
 	
-/*	@Test
+	/*@Test
 	public void testInsert() throws SQLException{
 		
-		int result = 0;
-		result = stmt.executeUpdate("Insert into File(parentID, name, directory, extension, addingDate) values (4, 'test', 'test/test', 'pdf', curdate())");
-		assertNotNull(result);
-		log.debug(result);
+		affectedRows = stmt.executeUpdate("Insert into File(parentID, name, directory, extension, addingDate) values (5, 'name', 'directory/directory', 'txt', curdate())");
+		assertNotNull(affectedRows);
+		log.debug("Rows affected after insert operation: " + affectedRows);
+		assertNotEquals(0, affectedRows);
 	}*/
 	
 	@Test
 	public void testSelect() throws SQLException{
-
-		stmt.executeQuery("Select * from file where extension='pdf'");
 		
-		
+		rs = stmt.executeQuery("Select * from file where extension='pdf'");
+		while(rs.next()){
+			log.debug(rs.getInt("fileID") + " " + rs.getString("extension"));
+			assertNotNull(rs.getString("extension"));
+		}
 	}
 	
-	@Test
+	/*@Test
 	public void testDelete() throws SQLException{
 		
-		affectedRows = stmt.executeUpdate("Delete from file where fileID between 15 and 16");
-		log.debug(affectedRows);
-		assertNull(affectedRows);
-		
+		affectedRows = stmt.executeUpdate("Delete from file where fileID=1");
+		log.debug("Rows affected after delete operation: " + affectedRows);
+		assertNotEquals(0,affectedRows);
 			
-	}
+	}*/
 	
-/*	@Test
+	/*@Test
 	public void testUpdate() throws SQLException{
-		stmt.executeUpdate("Update file set extension='ppt' where fileID=8");
+		stmt.executeUpdate("Update file set extension='ttt' where fileID=8");
+		log.debug("Rows affected after delete operation: " + affectedRows);
+		assertNotEquals(0,affectedRows);
 	}*/
 	
 	@After
 	public void afterTest() throws SQLException{
 		
-		if(conn != null){
-			conn.close();
+		if(rs != null){
+			rs.close();
 		}
 		
 		if(stmt != null){
 			stmt.close();
 		}
+		
+		if(conn != null){
+			conn.close();
+		}
+		
+		
 		
 	}
 	
