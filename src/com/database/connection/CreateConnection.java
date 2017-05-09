@@ -1,15 +1,31 @@
 package com.database.connection;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import java.sql.*;
 
-public interface CreateConnection {
+public abstract class CreateConnection {
 
-	public Connection getConnection() throws SQLException, IOException;
-	public Statement getStatement() throws SQLException, IOException;
+	
+	protected String url;
+	
+	protected String user;
+	
+	protected String password;
+	
+	protected abstract void init() throws IOException;
+	
+	public CreateConnection() {
+		try {
+			init();
+		} catch (IOException e) {
+			//FIXME 
+			e.printStackTrace();
+		}
+	}
+	
+	public Connection getConnection() throws SQLException, IOException {
 
+		return DriverManager.getConnection(url, user, password);
+	}
 
 }

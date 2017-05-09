@@ -72,41 +72,47 @@ public class ConnectionToDatabasetest {
 		assertNotNull(pstmt);
 	}*/
 
-	/*
-	 * @Test public void testSelect() throws SQLException{
-	 * 
-	 * String sql = "Select * from file where extension = :extension";
-	 * parameters.put(":extension", "ppt");
-	 * 
-	 * for(Map.Entry<String, Object> p : parameters.entrySet()){
-	 * 
-	 * sql = sql.replace(p.getKey(), p.getValue().toString()); }
-	 * 
-	 * 
-	 * pstmt = conn.prepareStatement(sql);
-	 * 
-	 * while(rs.next()){ rs = pstmt.executeQuery();
-	 * log.debug(rs.getInt(rs.getString(":extension")));
-	 * assertNotNull(rs.getString(":extension")); } }
-	 */
 
-	/*
-	 * @Test public void testDelete() throws SQLException{
-	 * 
-	 * affectedRows = stmt.executeUpdate("Delete from file where fileID=1");
-	 * log.debug("Rows affected after delete operation: " + affectedRows);
-	 * assertNotEquals(0,affectedRows);
-	 * 
-	 * }
-	 */
+/*	  @Test
+	  public void testSelect() throws SQLException{
+	  
+	  String sql = "Select * from file where extension = ':extension'";
+	  parameters.put(":extension", "ppt");
+	  
+	  for(Map.Entry<String, Object> p : parameters.entrySet()){
+	  
+		  sql = sql.replaceAll(p.getKey(), p.getValue().toString()); 
+	  
+	  }
+	  
+	  pstmt = conn.prepareStatement(sql);
+	  rs = pstmt.executeQuery();
+	  
+	  while(rs.next()){ 
+	  
+		  assertNotNull(rs.getString("extension")); 
+	  } 
+	  
+}*/
+	
 
-	@Test
+	
+/*	  @Test 
+	  public void testDelete() throws SQLException{
+	  
+	  affectedRows = stmt.executeUpdate("Delete from file where fileID=1");
+	  log.debug("Rows affected after delete operation: " + affectedRows);
+	  assertNotEquals(0,affectedRows);
+	 
+	  }*/
+
+/*	@Test
 	public void testUpdate() throws SQLException {
 
-		String sql = "Update file set extension = :extension where fileID = :fileID";
+		String sql = "Update file set extension = ':extension' where fileID = :fileID";
 
-		parameters.put(":extension", "kkk");
-		parameters.put("fileID", 8);
+		parameters.put(":extension", "ppt");
+		parameters.put(":fileID", 8);
 
 		for (Map.Entry<String, Object> p : parameters.entrySet()) {
 
@@ -114,13 +120,14 @@ public class ConnectionToDatabasetest {
 		}
 
 		pstmt = conn.prepareStatement(sql);
-		/*
+		affectedRows = pstmt.executeUpdate(sql);
+		
 		 * stmt.executeUpdate("Update file set extension='ttt' where fileID=8");
 		 * log.debug("Rows affected after delete operation: " + affectedRows);
-		 */
+		 
 		assertNotEquals(0, affectedRows);
 	}
-
+*/
 	@After
 	public void afterTest() throws SQLException {
 

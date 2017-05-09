@@ -1,5 +1,6 @@
 package com.database.crud;
 
+import java.sql.Date;
 import java.util.HashMap; 
 import java.util.Map;
 
@@ -8,8 +9,7 @@ public class MapValue {
 	public static Map<String, Object> parameters = new HashMap();
 	
 	//insert values into map
-	public static void insert(int fileId, int parentId, String name, String path, String extension){
-		parameters.put(":fileID", fileId);
+	public static void insert(int parentId, String name, String path, String extension){
 		parameters.put(":parentID", parentId);
 		parameters.put(":name", name);
 		parameters.put(":path", path);

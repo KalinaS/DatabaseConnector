@@ -1,12 +1,9 @@
 package com.database.connection;
 
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionFactory {
+public class ConnectionFactory{
 
 
 	public static CreateConnection getConnection(DBType dbType) throws SQLException, IOException {
@@ -26,5 +23,6 @@ public class ConnectionFactory {
 		}
 
 	}
+
 
 }
