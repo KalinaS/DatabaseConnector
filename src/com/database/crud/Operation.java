@@ -20,7 +20,7 @@ public abstract class Operation {
 	protected DBType dbType;
 	
 	public Operation(DBType dbType) throws SQLException, IOException, ClassNotFoundException{
-		dbType = dbType;
+		this.dbType = dbType;
 		BasicConfigurator.configure();
 	}
 
@@ -34,8 +34,8 @@ public abstract class Operation {
 	}
 	
 	
-	protected void openConnection(DBType dbtype) throws SQLException, IOException {
-
+	public void openConnection(DBType dbtype) throws SQLException, IOException {
+		
 		//FIXME check the connection creation
 		CreateConnection creator = ConnectionFactory.getConnection(dbType);
 		connection =  creator.getConnection();
@@ -49,7 +49,6 @@ public abstract class Operation {
 						connection.close();
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

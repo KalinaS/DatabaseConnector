@@ -14,13 +14,10 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
-import com.database.connection.DBConnection;
 
 public class ConnectionToDatabasetest {
 
-	Logger log = Logger.getLogger(DBConnection.class);
+	Logger log = Logger.getLogger(ConnectionToDatabasetest.class);
 
 	Map<String, Object> parameters = new HashMap();
 

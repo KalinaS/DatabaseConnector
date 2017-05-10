@@ -13,23 +13,28 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.database.connection.DBType;
 import com.database.crud.InsertOperation;
 import com.database.crud.MapValue;
 import com.database.crud.Operation;
+import com.database.crud.OperationType;
 import com.database.crud.ReadOperation;
 import com.database.crud.SqlQuery;
 
 public class OperationTest implements SqlQuery{
 	
 	Map<String, Object> parameters;
+	
+	Operation operation;
 
 	@Before
 	public void beforeTest() throws SQLException {
+		
 		parameters = new HashMap();
-		parameters.put(":name", "task");
-		parameters.put(":parentId", 0);
-		parameters.put(":path", "C:/Users/k.stoyanova/Desktop");
-		parameters.put(":extension", null);
+		parameters.put("name", "task");
+		parameters.put("parentId", 0);
+		parameters.put("path", "C:/Users/k.stoyanova/Desktop");
+		parameters.put("extension", null);
  	}
 	
 	@Test
@@ -39,22 +44,33 @@ public class OperationTest implements SqlQuery{
 	}
 	
 	@Test
-	public void testDoOperation() throws SQLException, IOException{
+	public void testConnection() throws SQLException, IOException{
 		
-		Operation.doOperation(INSERT, parameters);
+		operation.openConnection(DBType.MYSQLDB);
+	}
+	
+	@Test
+	public void testDoOperation() throws SQLException, IOException, ClassNotFoundException{
+		
+		operation = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
+		operation.doOperation(INSERT, parameters);
 		
 	}
 	
 	@Test
-	public void testInsertOperation() throws SQLException, IOException{
+	public void testInsertOperation() throws SQLException, IOException, ClassNotFoundException{
 		
-		InsertOperation.executeInsert();
+		InsertOperation iOperation= new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
+		iOperation.executeStatement(OperationType.INSERT, parameters);
+		
 	}
 	
 	@Test
-	public void testReadOperation() throws SQLException{
+	public void testReadOperation() throws SQLException, ClassNotFoundException, IOException{
 		
-		ReadOperation.doOperation(SELECT_BY_FILEID, parameters);
+		operation = new ReadOperation(OperationType.SELECT, DBType.MYSQLDB);
+	
+		
 	}
 
 }

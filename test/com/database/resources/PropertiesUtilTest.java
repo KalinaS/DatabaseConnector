@@ -1,16 +1,13 @@
 package com.database.resources;
 
 import org.junit.*;
-import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
 import com.database.connection.ConnectionFactory;
-import com.database.connection.DBConnection;
 import com.database.connection.DBType;
 import com.database.util.PropertyUtil;
 

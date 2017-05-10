@@ -34,7 +34,7 @@ public class InsertOperatonTest {
 //	}
 	
 	@Test
-	public void callInsertOpearation()  throws SQLException {
+	public void callInsertOpearation()  throws SQLException, IOException {
 		
 	    Operation insrtOperation = null;
 		try {

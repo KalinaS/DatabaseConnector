@@ -8,7 +8,7 @@ import com.database.connection.DBType;
 
 public class InsertOperation extends Operation implements SqlQuery {
 
-	protected InsertOperation(OperationType operation, DBType dbType) throws ClassNotFoundException, SQLException, IOException {
+	public InsertOperation(OperationType operation, DBType dbType) throws ClassNotFoundException, SQLException, IOException {
 		super(dbType);
 	}
 
@@ -19,7 +19,7 @@ public class InsertOperation extends Operation implements SqlQuery {
 	// }
 
 	@Override
-	protected void executeStatement(String sql, Map<String, Object> parameters) {
+	public void executeStatement(String sql, Map<String, Object> parameters) {
 
 		PreparedStatement ps = null;
 

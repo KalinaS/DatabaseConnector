@@ -10,7 +10,7 @@ import com.database.connection.DBType;
 
 public class ReadOperation extends Operation implements SqlQuery{
 	
-	protected ReadOperation(OperationType operation, DBType dbtype) throws ClassNotFoundException, SQLException, IOException{
+	public ReadOperation(OperationType operation, DBType dbtype) throws ClassNotFoundException, SQLException, IOException{
 		super(dbtype);
 	}
 
@@ -33,6 +33,10 @@ public class ReadOperation extends Operation implements SqlQuery{
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				
+			}
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
