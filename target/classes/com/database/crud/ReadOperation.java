@@ -8,40 +8,23 @@ import java.util.Map;
 
 import com.database.connection.DBType;
 
-public class ReadOperation extends Operation implements SqlQuery{
-	
-	public ReadOperation(OperationType operation, DBType dbtype) throws ClassNotFoundException, SQLException, IOException{
+public class ReadOperation extends Operation implements SqlQuery {
+
+	public ReadOperation(OperationType operation, DBType dbtype)
+			throws ClassNotFoundException, SQLException, IOException {
 		super(dbtype);
 	}
 
-	public void executeSelect() throws SQLException, IOException{
-		
-		//MapValue.selectByName();
-		doOperation(SELECT_BY_FILEID, MapValue.parameters);
+	@Override
+	protected boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
+
+		PreparedStatement ps  = connection.prepareStatement(SqlQuery.SELECT_BY_FILEID);
+			
+		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
+				
+				ps.setObject(p.getKey(), p.getValue());
+		}
+		return ps.executeUpdate() == 1;
 	}
 
-	@Override
-	protected void executeStatement(String sql, Map<String, Object> parameters) {
-		
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		for(Map.Entry<String, Object> p : parameters.entrySet()){
-			sql = sql.replaceAll(p.getKey(), p.getValue().toString());
-		}
-		
-		try {
-			ps = connection.prepareStatement(sql);
-			rs = ps.executeQuery();
-			
-			while(rs.next()){
-				
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
-	
 }

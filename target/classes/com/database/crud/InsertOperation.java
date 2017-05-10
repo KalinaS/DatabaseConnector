@@ -12,26 +12,15 @@ public class InsertOperation extends Operation implements SqlQuery {
 		super(dbType);
 	}
 
-	// public static void executeInsert() throws SQLException, IOException{
-	//
-	// doOperation(INSERT, MapValue.parameters);
-	//
-	// }
-
 	@Override
-	public void executeStatement(String sql, Map<String, Object> parameters) {
+	protected boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
-		PreparedStatement ps = null;
-
-		for (Map.Entry<String, Object> p : parameters.entrySet()) {
-
-			sql = sql.replaceAll(p.getKey(), p.getValue().toString());
-
+		PreparedStatement ps  = connection.prepareStatement(SqlQuery.INSERT);
+			
+		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
+				
+				ps.setObject(p.getKey(), p.getValue());
 		}
-		try {
-			ps = connection.prepareStatement(INSERT);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		return ps.executeUpdate() == 1;
 	}
 }

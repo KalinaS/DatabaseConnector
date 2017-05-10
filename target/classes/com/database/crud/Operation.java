@@ -9,7 +9,6 @@ import org.apache.log4j.BasicConfigurator;
 
 import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
-import com.database.connection.DBConnection;
 import com.database.connection.DBType;
 
 public abstract class Operation {
@@ -24,17 +23,28 @@ public abstract class Operation {
 		BasicConfigurator.configure();
 	}
 
-	protected abstract void executeStatement(String sql, Map<String, Object> parameters) ;
+	protected abstract boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException ;
 	
-	public void doOperation(String sql, Map<String, Object> parameters) throws SQLException, IOException {
+	public boolean doOperation(String sql, Map<Integer, Object> parameters) {
 		
-		openConnection(dbType);
-		executeStatement(sql, parameters);
-		closeConnection(connection);
+		boolean result = false;
+		try {
+			
+			openConnection(dbType);
+			result = executeStatement(sql, parameters);
+			
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return result;
 	}
 	
 	
-	public void openConnection(DBType dbtype) throws SQLException, IOException {
+	protected void openConnection(DBType dbtype) throws SQLException, IOException {
 		
 		//FIXME check the connection creation
 		CreateConnection creator = ConnectionFactory.getConnection(dbType);

@@ -15,24 +15,6 @@ import com.database.connection.DBType;
 public class InsertOperatonTest {
 
 	
-//	@Before
-//	public void beforeTest() throws SQLException {
-//
-//		try {
-//
-//			Class.forName("com.mysql.jdbc.Driver");
-//
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/file_management", "root", "database");
-//			stmt = conn.createStatement();
-//
-//		} catch (ClassNotFoundException cnf) {
-//			log.error(cnf.getMessage());
-//		} finally {
-//
-//		}
-//
-//	}
-	
 	@Test
 	public void callInsertOpearation()  throws SQLException, IOException {
 		
@@ -51,14 +33,13 @@ public class InsertOperatonTest {
 		}
 	    Assert.assertNotNull(insrtOperation);
 		
-	    Map<String, Object> parameters = new HashMap<String, Object>();
-	    parameters.put("parentId", 6);
-		parameters.put("name", "file");
-		parameters.put("directory", "file/file");
-		parameters.put("extension", "ppt");
-		parameters.put("addingDate", "curvalue()");
+	    Map<Integer, Object> parameters = new HashMap<Integer, Object>();
+	    parameters.put(1, 6);
+		parameters.put(2, "file");
+		parameters.put(3, "file/file");
+		parameters.put(4, "ppt");
 		
-	    insrtOperation.doOperation(SqlQuery.INSERT, parameters);
+	    Assert.assertTrue(insrtOperation.doOperation(SqlQuery.INSERT, parameters));
 	   
 	}
 }

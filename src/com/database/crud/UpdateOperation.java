@@ -14,26 +14,15 @@ public class UpdateOperation extends Operation implements SqlQuery{
 		super(dbtype);
 	}
 
-	public void executeUpdate() throws SQLException, IOException{
-		doOperation(UPDATE_NAME, MapValue.parameters);
-	}
-
 	@Override
-	protected void executeStatement(String sql, Map<String, Object> parameters) {
-		
-		PreparedStatement ps = null;
-		
-		for(Map.Entry<String, Object> p : parameters.entrySet()){
+	protected boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
+
+		PreparedStatement ps  = connection.prepareStatement(SqlQuery.UPDATE_NAME);
 			
-			sql = sql.replaceAll(p.getKey(), p.getValue().toString());
+		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
+				
+				ps.setObject(p.getKey(), p.getValue());
 		}
-		
-		try {
-			ps = connection.prepareStatement(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		return ps.executeUpdate() == 1;
 	}
 }

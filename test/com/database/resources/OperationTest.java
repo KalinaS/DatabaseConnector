@@ -35,18 +35,13 @@ public class OperationTest implements SqlQuery{
 		parameters.put("parentId", 0);
 		parameters.put("path", "C:/Users/k.stoyanova/Desktop");
 		parameters.put("extension", null);
+		parameters.put("addingDate", "curdate()");
  	}
 	
 	@Test
 	public void testIsParameterEmpty(){
 
 		assertTrue(MapValue.isParametersEmpty());
-	}
-	
-	@Test
-	public void testConnection() throws SQLException, IOException{
-		
-		operation.openConnection(DBType.MYSQLDB);
 	}
 	
 	@Test
@@ -60,8 +55,8 @@ public class OperationTest implements SqlQuery{
 	@Test
 	public void testInsertOperation() throws SQLException, IOException, ClassNotFoundException{
 		
-		InsertOperation iOperation= new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
-		iOperation.executeStatement(OperationType.INSERT, parameters);
+		operation = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
+		operation.executeStatement(INSERT, parameters);
 		
 	}
 	
@@ -69,7 +64,7 @@ public class OperationTest implements SqlQuery{
 	public void testReadOperation() throws SQLException, ClassNotFoundException, IOException{
 		
 		operation = new ReadOperation(OperationType.SELECT, DBType.MYSQLDB);
-	
+		
 		
 	}
 
