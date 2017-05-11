@@ -21,6 +21,12 @@ public class InsertOperation extends Operation implements SqlQuery {
 				
 				ps.setObject(p.getKey(), p.getValue());
 		}
-		return ps.executeUpdate() == 1;
+		return getResultFlag();
+	}
+
+	@Override
+	protected void setContent() {
+		// TODO Auto-generated method stub
+		
 	}
 }

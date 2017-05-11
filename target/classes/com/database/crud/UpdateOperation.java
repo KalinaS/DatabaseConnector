@@ -17,12 +17,18 @@ public class UpdateOperation extends Operation implements SqlQuery{
 	@Override
 	protected boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
-		PreparedStatement ps  = connection.prepareStatement(SqlQuery.UPDATE_NAME);
+		PreparedStatement ps  = connection.prepareStatement(SqlQuery.UPDATE);
 			
 		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
 				
 				ps.setObject(p.getKey(), p.getValue());
 		}
-		return ps.executeUpdate() == 1;
+		return getResultFlag();
+	}
+
+	@Override
+	protected void setContent() {
+		// TODO Auto-generated method stub
+		
 	}
 }

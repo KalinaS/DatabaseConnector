@@ -10,14 +10,14 @@ import org.junit.Test;
 
 import com.database.connection.DBType;
 
-public class UpdateOperationTest {
+public class SelectOperationTest {
 
 	@Test
-	public void callUpdatePperation() throws SQLException {
-
-		Operation updateOperation = null;
+	public void SelectOperationTest() throws SQLException{
+		
+		Operation selectOperation = null;
 		try {
-			updateOperation = OperationFactory.create(OperationType.UPDATE, DBType.MYSQLDB);
+			selectOperation = OperationFactory.create(OperationType.SELECT, DBType.MYSQLDB);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -27,12 +27,13 @@ public class UpdateOperationTest {
 			e.printStackTrace();
 			Assert.fail();
 		}
-		Assert.assertNotNull(updateOperation);
+		Assert.assertNotNull(selectOperation);
 
 		Map<Integer, Object> parameters = new HashMap<Integer, Object>();
 		parameters.put(1, "file");
-		parameters.put(2, 7);
 
-		Assert.assertTrue(updateOperation.doOperation(SqlQuery.UPDATE, parameters));
+		Assert.assertTrue(selectOperation.doOperation(SqlQuery.SELECT, parameters));
+		
 	}
+	
 }

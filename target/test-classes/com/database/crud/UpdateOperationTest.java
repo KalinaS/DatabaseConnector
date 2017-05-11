@@ -30,12 +30,9 @@ public class UpdateOperationTest {
 		Assert.assertNotNull(updateOperation);
 
 		Map<Integer, Object> parameters = new HashMap<Integer, Object>();
-		parameters.put(1, 6);
-		parameters.put(2, "file");
-		parameters.put(3, "file/file");
-		parameters.put(4, "ppt");
+		parameters.put(1, "file");
+		parameters.put(2, 7);
 
-		Assert.assertTrue(updateOperation.doOperation(SqlQuery.UPDATE_NAME, parameters));
-
+		Assert.assertTrue(updateOperation.doOperation(SqlQuery.UPDATE, parameters));
 	}
 }
