@@ -11,7 +11,7 @@ import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
 import com.database.connection.DBType;
 
-public abstract class Operation extends Result{
+public abstract class Operation{
 	
 	
 	protected Connection connection;
@@ -27,11 +27,12 @@ public abstract class Operation extends Result{
 	
 	public boolean doOperation(String sql, Map<Integer, Object> parameters) {
 		
+		boolean result = false;
+		
 		try {
 			
 			openConnection(dbType);
-			setResultFlag(executeStatement(sql, parameters));
-			//result = executeStatement(sql, parameters);
+			result = executeStatement(sql, parameters);
 			
 		} catch (SQLException sqlException) {
 			sqlException.printStackTrace();
@@ -40,7 +41,7 @@ public abstract class Operation extends Result{
 		} finally {
 			closeConnection(connection);
 		}
-		return getResultFlag();
+		return result;
 	}
 	
 	

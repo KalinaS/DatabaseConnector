@@ -23,12 +23,6 @@ public class UpdateOperation extends Operation implements SqlQuery{
 				
 				ps.setObject(p.getKey(), p.getValue());
 		}
-		return getResultFlag();
-	}
-
-	@Override
-	protected void setContent() {
-		// TODO Auto-generated method stub
-		
+		return ps.executeUpdate() == 1;
 	}
 }

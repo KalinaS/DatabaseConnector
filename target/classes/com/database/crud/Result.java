@@ -1,24 +1,20 @@
 package com.database.crud;
 
-import java.sql.ResultSet;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-public abstract class Result {
+import com.database.connection.DBType;
 
-	protected ResultSet rs = null;
-	private boolean resultFlag = true;
-	protected List<Object> content;
-	private String message;
-	
-	public void setResultFlag(boolean resultFlag){
-		
-		this.resultFlag = resultFlag;
+public abstract class Result extends Operation{
+
+	public Result(DBType dbType) throws SQLException, IOException, ClassNotFoundException {
+		super(dbType);
+		// TODO Auto-generated constructor stub
 	}
+	protected boolean flag;
+	protected List<Object> result;
+	protected String message;
 	
-	public boolean getResultFlag(){
-		
-		return resultFlag;
-	}
 	
-	protected abstract void setContent(String columName);
 }

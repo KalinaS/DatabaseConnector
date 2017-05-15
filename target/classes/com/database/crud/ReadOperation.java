@@ -53,7 +53,7 @@ public class ReadOperation extends Operation implements SqlQuery {
 				content.add(rs.getString(columName));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
