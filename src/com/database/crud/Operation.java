@@ -10,6 +10,7 @@ import org.apache.log4j.BasicConfigurator;
 import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
 import com.database.connection.DBType;
+import com.database.result.Result;
 
 public abstract class Operation{
 	
@@ -23,7 +24,7 @@ public abstract class Operation{
 		BasicConfigurator.configure();
 	}
 
-	protected abstract boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException ;
+	protected abstract Result executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException ;
 	
 	public boolean doOperation(String sql, Map<Integer, Object> parameters) {
 		
@@ -32,7 +33,8 @@ public abstract class Operation{
 		try {
 			
 			openConnection(dbType);
-			result = executeStatement(sql, parameters);
+			//result = executeStatement(sql, parameters);
+			
 			
 		} catch (SQLException sqlException) {
 			sqlException.printStackTrace();

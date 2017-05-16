@@ -48,7 +48,7 @@ public class OperationTest implements SqlQuery{
 	public void testDoOperation() throws SQLException, IOException, ClassNotFoundException{
 		
 		operation = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
-		operation.doOperation(INSERT, parameters);
+		//operation.doOperation(INSERT, parameters);
 		
 	}
 	
@@ -56,7 +56,7 @@ public class OperationTest implements SqlQuery{
 	public void testInsertOperation() throws SQLException, IOException, ClassNotFoundException{
 		
 		operation = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
-		operation.executeStatement(INSERT, parameters);
+		//operation.executeStatement(INSERT, parameters);
 		
 	}
 	

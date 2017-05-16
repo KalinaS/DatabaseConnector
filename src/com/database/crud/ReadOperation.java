@@ -12,50 +12,30 @@ public class ReadOperation extends Operation implements SqlQuery {
 
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	
+
 	public ReadOperation(OperationType operation, DBType dbtype)
 			throws ClassNotFoundException, SQLException, IOException {
 		super(dbtype);
 	}
 
 	@Override
-	protected boolean executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
+	protected SelectResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
-		ps  = connection.prepareStatement(SqlQuery.SELECT);
-			
+		ps = connection.prepareStatement(SqlQuery.SELECT);
+
 		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
-				
-				ps.setObject(p.getKey(), p.getValue());
+
+			ps.setObject(p.getKey(), p.getValue());
 		}
-		
+
 		rs = ps.executeQuery();
-		/*while (rs.next()){
-			String name  = rs.getString("name");
-			
-			System.out.println(name);
-			
-		}*/
-		
-		setContent("name");
-		
-		if(!content.isEmpty()){
-			return getResultFlag();
-		} else {
-			return false;
-		}
-	}
+		/*
+		 * while (rs.next()){ String name = rs.getString("name");
+		 * 
+		 * System.out.println(name);
+		 * 
+		 * }
+		 */
 
-	@Override
-	protected void setContent(String columName) {
-		
-		try {
-			while(rs.next()){
-				content.add(rs.getString(columName));
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
 	}
-
 }
