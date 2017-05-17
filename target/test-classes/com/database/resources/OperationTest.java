@@ -18,7 +18,7 @@ import com.database.crud.InsertOperation;
 import com.database.crud.MapValue;
 import com.database.crud.Operation;
 import com.database.crud.OperationType;
-import com.database.crud.ReadOperation;
+import com.database.crud.SelectOperation;
 import com.database.crud.SqlQuery;
 
 public class OperationTest implements SqlQuery{
@@ -63,7 +63,7 @@ public class OperationTest implements SqlQuery{
 	@Test
 	public void testReadOperation() throws SQLException, ClassNotFoundException, IOException{
 		
-		operation = new ReadOperation(OperationType.SELECT, DBType.MYSQLDB);
+		operation = new SelectOperation(OperationType.SELECT, DBType.MYSQLDB);
 		
 		
 	}

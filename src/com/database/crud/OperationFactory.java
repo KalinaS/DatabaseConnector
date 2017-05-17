@@ -15,7 +15,7 @@ public class OperationFactory {
 			return new InsertOperation(operation, dbType);
 			
 		case SELECT :
-			return new ReadOperation(operation, dbType);
+			return new SelectOperation(operation, dbType);
 			
 		case UPDATE:
 			return new UpdateOperation(operation, dbType);

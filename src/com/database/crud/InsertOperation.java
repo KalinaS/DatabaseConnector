@@ -13,7 +13,7 @@ public class InsertOperation extends Operation implements SqlQuery {
 		super(dbType);
 	}
 	
-
+	
 	@Override
 	public InsertResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException {
 

@@ -10,6 +10,7 @@ import org.apache.log4j.BasicConfigurator;
 import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
 import com.database.connection.DBType;
+import com.database.connection.MysqlConnection;
 import com.database.result.Result;
 
 public abstract class Operation{
@@ -50,7 +51,7 @@ public abstract class Operation{
 	protected void openConnection(DBType dbtype) throws SQLException, IOException {
 		
 		//FIXME check the connection creation
-		CreateConnection creator = ConnectionFactory.getConnection(dbType);
+		CreateConnection creator = ConnectionFactory.getConnection(dbtype);
 		connection =  creator.getConnection();
 	}
 	

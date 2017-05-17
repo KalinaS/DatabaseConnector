@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import com.database.connection.DBType;
+import com.database.result.SelectResult;
 
-public class ReadOperation extends Operation implements SqlQuery {
+public class SelectOperation extends Operation implements SqlQuery {
 
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 
-	public ReadOperation(OperationType operation, DBType dbtype)
+	public SelectOperation(OperationType operation, DBType dbtype)
 			throws ClassNotFoundException, SQLException, IOException {
 		super(dbtype);
 	}
@@ -22,6 +23,8 @@ public class ReadOperation extends Operation implements SqlQuery {
 	protected SelectResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
 		ps = connection.prepareStatement(SqlQuery.SELECT);
+		
+		SelectResult result = new SelectResult();
 
 		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
 
@@ -37,5 +40,6 @@ public class ReadOperation extends Operation implements SqlQuery {
 		 * }
 		 */
 
+		return result;
 	}
 }

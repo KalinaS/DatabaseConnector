@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.*;
 
 public abstract class CreateConnection {
-
 	
 	protected String url;
 	
