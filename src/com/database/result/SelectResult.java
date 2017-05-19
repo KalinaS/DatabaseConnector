@@ -15,13 +15,13 @@ public class SelectResult extends Result{
 		}
 	}
 	
-	public Object getContent(){
+	public List<Object> getContent(){
 		
-		Object item = "";
+		List<Object> item = new ArrayList<Object>();
 		
 		for(int i = 0; i < content.size(); i++){
 			
-			item = content.get(i);
+			item.add(content.get(i));
 		}
 		
 		return item;

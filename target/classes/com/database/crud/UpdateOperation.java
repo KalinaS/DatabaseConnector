@@ -16,7 +16,7 @@ public class UpdateOperation extends Operation implements SqlQuery{
 	}
 
 	@Override
-	protected UpdateResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException {
+	public UpdateResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException {
 
 		UpdateResult result = new UpdateResult();
 		

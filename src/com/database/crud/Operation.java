@@ -27,15 +27,15 @@ public abstract class Operation{
 
 	protected abstract Result executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException ;
 	
-	public boolean doOperation(String sql, Map<Integer, Object> parameters) {
+	public Result doOperation(String sql, Map<Integer, Object> parameters) throws ClassNotFoundException{
 		
-		boolean result = false;
+		Result result = null;
 		
 		try {
 			
 			openConnection(dbType);
-			//result = executeStatement(sql, parameters);
-			
+			result = executeStatement(sql, parameters);
+			//executeStatement(sql, parameters);
 			
 		} catch (SQLException sqlException) {
 			sqlException.printStackTrace();
@@ -48,7 +48,7 @@ public abstract class Operation{
 	}
 	
 	
-	protected void openConnection(DBType dbtype) throws SQLException, IOException {
+	public void openConnection(DBType dbtype) throws SQLException, IOException {
 		
 		//FIXME check the connection creation
 		CreateConnection creator = ConnectionFactory.getConnection(dbtype);

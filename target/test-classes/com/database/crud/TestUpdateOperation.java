@@ -10,10 +10,10 @@ import org.junit.Test;
 
 import com.database.connection.DBType;
 
-public class UpdateOperationTest {
+public class TestUpdateOperation {
 
 	@Test
-	public void callUpdatePperation() throws SQLException {
+	public void callUpdatePperation() throws SQLException, ClassNotFoundException {
 
 		Operation updateOperation = null;
 		try {
@@ -33,6 +33,6 @@ public class UpdateOperationTest {
 		parameters.put(1, "file");
 		parameters.put(2, 7);
 
-		Assert.assertTrue(updateOperation.doOperation(SqlQuery.UPDATE, parameters));
+		Assert.assertNotNull(updateOperation.doOperation(SqlQuery.UPDATE, parameters));
 	}
 }

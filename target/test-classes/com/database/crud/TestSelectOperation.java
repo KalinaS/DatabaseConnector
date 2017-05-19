@@ -10,10 +10,10 @@ import org.junit.Test;
 
 import com.database.connection.DBType;
 
-public class SelectOperationTest {
+public class TestSelectOperation {
 
 	@Test
-	public void SelectOperationTest() throws SQLException{
+	public void SelectOperationTest() throws SQLException, ClassNotFoundException{
 		
 		Operation selectOperation = null;
 		try {
@@ -32,7 +32,7 @@ public class SelectOperationTest {
 		Map<Integer, Object> parameters = new HashMap<Integer, Object>();
 		parameters.put(1, "file");
 
-		Assert.assertTrue(selectOperation.doOperation(SqlQuery.SELECT, parameters));
+		Assert.assertNotNull(selectOperation.doOperation(SqlQuery.SELECT, parameters));
 		
 	}
 	

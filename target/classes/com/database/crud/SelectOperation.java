@@ -23,7 +23,7 @@ public class SelectOperation extends Operation implements SqlQuery {
 	protected SelectResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
 		ps = connection.prepareStatement(SqlQuery.SELECT);
-		
+
 		SelectResult result = new SelectResult();
 
 		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
@@ -32,13 +32,12 @@ public class SelectOperation extends Operation implements SqlQuery {
 		}
 
 		rs = ps.executeQuery();
-		/*
-		 * while (rs.next()){ String name = rs.getString("name");
-		 * 
-		 * System.out.println(name);
-		 * 
-		 * }
-		 */
+
+		while (rs.next()) {
+			
+			result.setContent(rs.getObject("name"));
+
+		}
 
 		return result;
 	}

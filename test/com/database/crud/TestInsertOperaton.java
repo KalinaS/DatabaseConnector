@@ -12,11 +12,11 @@ import org.junit.Test;
 
 import com.database.connection.DBType;
 
-public class InsertOperatonTest {
+public class TestInsertOperaton {
 
 	
 	@Test
-	public void callInsertOpearation()  throws SQLException, IOException {
+	public void callInsertOpearation()  throws SQLException, IOException, ClassNotFoundException {
 		
 	    Operation insrtOperation = null;
 		try {
@@ -39,7 +39,7 @@ public class InsertOperatonTest {
 		parameters.put(3, "file/file");
 		parameters.put(4, "ppt");
 		
-	    Assert.assertTrue(insrtOperation.doOperation(SqlQuery.INSERT, parameters));
+	    Assert.assertNotNull(insrtOperation.doOperation(SqlQuery.INSERT, parameters));
 	   
 	}
 }
