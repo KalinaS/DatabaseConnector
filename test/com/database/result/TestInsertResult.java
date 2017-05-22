@@ -39,7 +39,6 @@ public class TestInsertResult {
 	java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
 	@Before
 	public void beforeTests() throws ClassNotFoundException, SQLException, IOException {
-		io = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
 	    parameters.put(1, 6);
 		parameters.put(2, "file");
 		parameters.put(3, "file/file");

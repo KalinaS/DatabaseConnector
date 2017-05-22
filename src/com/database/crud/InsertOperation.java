@@ -9,7 +9,6 @@ import com.database.result.InsertResult;
 
 public class InsertOperation extends Operation implements SqlQuery {
 	
-	//InsertOperation io = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
 	
 	public InsertOperation(OperationType operation, DBType dbType) throws ClassNotFoundException, SQLException, IOException {
 		super(dbType);

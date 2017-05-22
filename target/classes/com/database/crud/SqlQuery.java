@@ -6,10 +6,12 @@ public interface SqlQuery {
 	//static final String SELECT_BY_NAME = "Select * from File where name = :name";
 	
 	//static final String INSERT = "Insert into File ( parentID, name, directory, extension, addingDate) values (:parentID, :name, :directory, :extension, curdate())";
-	String INSERT = "Insert into File ( parentID, name, directory, extension, addingDate) values (?, ?, ?, ?, ?)";
+	static final String INSERT = "Insert into File ( parentID, name, directory, extension, addingDate) values (?, ?, ?, ?, ?)";
 	//static final String UPDATE_NAME = "Update File set name = :name where file = :file";
-	String UPDATE = "Update File set name = ? where fileID = ?";
-	String SELECT = "Select * from File where name = ?";
-	String DELETE = "Delete * from file";
+	static final String UPDATE = "Update File set name = ? where fileID = ?";
+	static final String SELECT = "Select * from File where name = ?";
+	static final String DELETE = "Delete from file";
+	static final String DELETE_ITEM = "Set foreign_key_checks=?; Delete from file where name = ?";
+	//static final String SET_FOREIGN_KEY_CHECKS = "Set foreign_key_checks=0";
 
 }
