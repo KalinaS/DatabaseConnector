@@ -39,11 +39,10 @@ public class TestInsertResult {
 	java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
 	@Before
 	public void beforeTests() throws ClassNotFoundException, SQLException, IOException {
-	    parameters.put(1, 6);
-		parameters.put(2, "file");
-		parameters.put(3, "file/file");
-		parameters.put(4, "ppt");
-		parameters.put(5, date);
+	    parameters.put(1, "File");
+		parameters.put(2, "pdf");
+		parameters.put(3, date);
+		parameters.put(4, "file/file");
 		
 		result = new InsertResult();
 		io = new InsertOperation(OperationType.INSERT, DBType.MYSQLDB);
@@ -62,13 +61,13 @@ public class TestInsertResult {
 		assertNotNull(result);
 	}
 	
-	@Test
+/*	@Test
 	public void testExecuteStatement() throws SQLException, ClassNotFoundException, IOException{
 		
 		result = io.executeStatement(SqlQuery.INSERT, parameters);
 		assertNotNull(result);
 		
-	}
+	}*/
 
 	@Test
 	public void testNumOperations() throws SQLException, ClassNotFoundException, IOException{

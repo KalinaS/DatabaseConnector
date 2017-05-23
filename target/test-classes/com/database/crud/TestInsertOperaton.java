@@ -3,6 +3,7 @@ package com.database.crud;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +18,9 @@ public class TestInsertOperaton {
 	
 	@Test
 	public void callInsertOpearation()  throws SQLException, IOException, ClassNotFoundException {
+		
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
 		
 	    Operation insrtOperation = null;
 		try {
@@ -34,10 +38,10 @@ public class TestInsertOperaton {
 	    Assert.assertNotNull(insrtOperation);
 		
 	    Map<Integer, Object> parameters = new HashMap<Integer, Object>();
-	    parameters.put(1, 6);
-		parameters.put(2, "file");
-		parameters.put(3, "file/file");
-		parameters.put(4, "ppt");
+	    parameters.put(1, "File");
+		parameters.put(2, "pdf");
+		parameters.put(3, date);
+		parameters.put(4, "file/file");
 		
 	    Assert.assertNotNull(insrtOperation.doOperation(SqlQuery.INSERT, parameters));
 	   
