@@ -39,8 +39,10 @@ public class TestInsertResult {
 	java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
 	@Before
 	public void beforeTests() throws ClassNotFoundException, SQLException, IOException {
+		
+		//parameters.put(1, 1);
 	    parameters.put(1, "File");
-		parameters.put(2, "pdf");
+		parameters.put(2, "ppt");
 		parameters.put(3, date);
 		parameters.put(4, "file/file");
 		

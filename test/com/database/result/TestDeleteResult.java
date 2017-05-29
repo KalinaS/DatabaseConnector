@@ -27,8 +27,7 @@ public class TestDeleteResult {
 		delete = new DeleteOperation(DBType.MYSQLDB);
 		result = new DeleteResult();
 		
-		parameters.put(1, 0);
-		parameters.put(2, "FolderScanner");
+		parameters.put(1, "new file");
 		
 	}
 	
