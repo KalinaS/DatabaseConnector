@@ -27,7 +27,7 @@ public class TestDeleteResult {
 		delete = new DeleteOperation(DBType.MYSQLDB);
 		result = new DeleteResult();
 		
-		parameters.put(1, "new file");
+		parameters.put(1, "file");
 		
 	}
 	
@@ -47,7 +47,7 @@ public class TestDeleteResult {
 	@Test
 	public void testDoOperation() throws ClassNotFoundException{
 		
-		result = (DeleteResult) delete.doOperation(SqlQuery.DELETE_ITEM, parameters);
+		result = (DeleteResult) delete.doOperation(SqlQuery.DELETE, parameters);
 		assertNotNull(result);
 		
 	}

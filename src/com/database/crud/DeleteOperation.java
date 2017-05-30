@@ -26,10 +26,11 @@ public class DeleteOperation extends Operation{
 			
 			ps.setObject(p.getKey(), p.getValue());
 	}
+		int numOperation = ps.executeUpdate();
 		
-		result.setDeleteOperations(ps.executeUpdate());
-		result.setFlag(ps.executeUpdate() == 1);
-		if (ps.executeUpdate() == 1) {
+		result.setDeleteOperations(numOperation);
+		result.setFlag(numOperation == 1);
+		if (numOperation == 1) {
 			result.setMessage("Success");
 		} else { 
 			result.setMessage("Failed");

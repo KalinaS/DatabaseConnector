@@ -1,2 +1,10 @@
-com\database\resources\OperationTest.class
+com\database\crud\TestUpdateOperation.class
+com\database\result\TestInsertResult.class
+com\database\crud\TestInsertOperaton.class
+com\database\result\TestSelectResult.class
 com\database\resources\PropertiesUtilTest.class
+com\database\result\TestUpdateResult.class
+com\database\crud\TestSelectOperation.class
+com\database\result\TestDeleteResult.class
+com\database\resources\OperationTest.class
+com\database\connection\TestConnection.class

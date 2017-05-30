@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.database.result.TestUpdateResult
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec <<< FAILURE! - in com.database.result.TestUpdateResult
+testMessage(com.database.result.TestUpdateResult)  Time elapsed: 0.013 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Success]> but was:<[Failed]>
+	at com.database.result.TestUpdateResult.testMessage(TestUpdateResult.java:79)
+
+testNumOperations(com.database.result.TestUpdateResult)  Time elapsed: 0.017 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at com.database.result.TestUpdateResult.testNumOperations(TestUpdateResult.java:69)
+

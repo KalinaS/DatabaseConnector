@@ -24,18 +24,6 @@ public class MapValue {
 			return false;
 		}
 	}
-	
-/*	public static Map getParamteres(){
-		return parameters;
-	}*/
-	
-	public static void selectByName(){
-		
-		parameters.get(":name");
-	}
-	
-/*	public static void selectByFileId(){
-		parameters.get(":fileID");
-	}*/
+
 
 }

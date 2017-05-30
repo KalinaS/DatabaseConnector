@@ -39,7 +39,7 @@ public class PropertiesUtilTest {
 
 		assertEquals("root", PropertyUtil.getValue("mysqlUser"));
 		assertEquals("database", PropertyUtil.getValue("mysqlPass"));
-		assertEquals("jdbc:mysql://localhost:3306/sakila", PropertyUtil.getValue("mysqlUrl"));
+		assertEquals("jdbc:mysql://localhost:3306/file_management?useSSL=false", PropertyUtil.getValue("mysqlUrl"));
 	}
 	
 	@Test

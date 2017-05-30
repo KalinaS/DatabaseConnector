@@ -10,7 +10,7 @@ public interface SqlQuery {
 	//static final String UPDATE_NAME = "Update File set name = :name where file = :file";
 	static final String UPDATE = "Update File set name = ? where fileID = ?";
 	static final String SELECT = "Select * from File where name = ?";
-	static final String DELETE = "Delete from file";
+	static final String DELETE = "Delete from ?";
 	static final String DELETE_ITEM = "Delete from file where name = ?";
 	//static final String SET_FOREIGN_KEY_CHECKS = "Set foreign_key_checks=0";
 
