@@ -41,5 +41,4 @@ public class InsertOperation extends Operation implements SqlQuery {
 		return result;
 	}
 	
-	
 }

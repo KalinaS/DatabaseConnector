@@ -28,7 +28,7 @@ public class TestUpdateResult {
 		result = new UpdateResult();
 		
 		parameters.put(1, "new file");
-		parameters.put(2, "10");
+		parameters.put(2, 116);
 	}
 	
 	@Test
