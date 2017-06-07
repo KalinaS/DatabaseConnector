@@ -1,11 +1,5 @@
 package com.database.result;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Map;
-
-import com.database.connection.DBType;
-
 public class InsertResult extends Result{
 		
 	private boolean flag;

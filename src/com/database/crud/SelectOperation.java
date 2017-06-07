@@ -32,13 +32,15 @@ public class SelectOperation extends Operation implements SqlQuery {
 		}
 
 		rs = ps.executeQuery();
+		
+		result.setContent(rs);
 
-		while (rs.next()) {
+/*		while (rs.next()) {
 			
 			result.setContent(rs.getObject("name"));
 
 		}
-
+*/
 		return result;
 	}
 }

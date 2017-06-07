@@ -1,7 +1,6 @@
 package com.database.crud;
 
-import java.sql.Date;
-import java.util.HashMap; 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MapValue {

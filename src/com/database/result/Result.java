@@ -1,7 +1,5 @@
 package com.database.result;
 
-import java.util.List;
-
 import com.database.crud.SqlQuery;
 
 public abstract class Result implements SqlQuery{

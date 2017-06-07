@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import com.database.connection.DBType;
-import com.database.crud.MapValue;
 import com.database.result.UpdateResult;
 
 public class UpdateOperation extends Operation implements SqlQuery{

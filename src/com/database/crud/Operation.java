@@ -1,16 +1,15 @@
 package com.database.crud;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 
 import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
 import com.database.connection.DBType;
-import com.database.connection.MysqlConnection;
 import com.database.result.Result;
 
 public abstract class Operation{

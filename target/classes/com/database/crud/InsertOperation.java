@@ -1,7 +1,8 @@
 package com.database.crud;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Map;
 
 import com.database.connection.DBType;

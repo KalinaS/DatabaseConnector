@@ -7,7 +7,6 @@ import java.util.Map;
 
 import com.database.connection.DBType;
 import com.database.result.DeleteResult;
-import com.database.result.Result;
 
 public class DeleteOperation extends Operation{
 
