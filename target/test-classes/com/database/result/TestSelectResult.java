@@ -27,7 +27,7 @@ public class TestSelectResult {
 		so = new SelectOperation(OperationType.SELECT, DBType.MYSQLDB);
 		result = new SelectResult();
 		
-		parameters.put(1, "file");
+		parameters.put(1, "kalina");
 		
 	}
 	
@@ -40,7 +40,7 @@ public class TestSelectResult {
 	@Test
 	public void testDoOperation() throws ClassNotFoundException{
 		
-		result = (SelectResult) so.doOperation(SqlQuery.SELECT, parameters);
+		result = (SelectResult) so.doOperation(SqlQuery.SELECT_BY_NAME, parameters);
 		
 		assertNotNull(result);
 		
@@ -49,7 +49,7 @@ public class TestSelectResult {
 	@Test
 	public void testContent() throws ClassNotFoundException{
 		
-		result = (SelectResult) so.doOperation(SqlQuery.SELECT, parameters);
+		result = (SelectResult) so.doOperation(SqlQuery.SELECT_BY_NAME, parameters);
 		
 		Object content = result.getContent();
 		

@@ -32,7 +32,7 @@ public class TestSelectOperation {
 		Map<Integer, Object> parameters = new HashMap<Integer, Object>();
 		parameters.put(1, "file");
 
-		Assert.assertNotNull(selectOperation.doOperation(SqlQuery.SELECT, parameters));
+		Assert.assertNotNull(selectOperation.doOperation(SqlQuery.SELECT_BY_NAME, parameters));
 		
 	}
 	

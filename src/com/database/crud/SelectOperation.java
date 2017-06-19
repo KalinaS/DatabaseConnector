@@ -22,7 +22,7 @@ public class SelectOperation extends Operation implements SqlQuery {
 	@Override
 	protected SelectResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException {
 
-		ps = connection.prepareStatement(SqlQuery.SELECT);
+		ps = connection.prepareStatement(sql);
 
 		SelectResult result = new SelectResult();
 

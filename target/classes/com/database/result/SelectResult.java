@@ -18,7 +18,8 @@ public class SelectResult extends Result{
 		}*/
 		
 		while(rs.next()){
-			content.add(rs.getObject("name"));
+			//content.add(rs.getObject("name"));
+			content.add(rs.getObject(1));
 		}
 	}
 	

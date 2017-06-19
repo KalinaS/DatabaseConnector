@@ -16,11 +16,15 @@ public class InsertOperation extends Operation implements SqlQuery {
 		
 	}
 	
-	
+	/**
+	 * @param sql sql query to be executed
+	 * @param parameters the values which have to be inserted
+	 * @return return the result of execution - number of operations and message
+	 */
 	@Override
 	public InsertResult executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException {
 
-		PreparedStatement ps  = connection.prepareStatement(SqlQuery.INSERT);
+		PreparedStatement ps  = connection.prepareStatement(sql);
 		InsertResult result = new InsertResult();
 			
 		for (Map.Entry<Integer, Object> p : parameters.entrySet()) {
@@ -41,5 +45,6 @@ public class InsertOperation extends Operation implements SqlQuery {
 		
 		return result;
 	}
+	
 	
 }
