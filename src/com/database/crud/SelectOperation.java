@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import com.database.connection.DBType;
+import com.database.result.Result;
 import com.database.result.SelectResult;
 
 public class SelectOperation extends Operation implements SqlQuery {
@@ -32,15 +33,22 @@ public class SelectOperation extends Operation implements SqlQuery {
 		}
 
 		rs = ps.executeQuery();
-		
+
 		result.setContent(rs);
+		//result.printResult(rs);
 
-/*		while (rs.next()) {
-			
-			result.setContent(rs.getObject("name"));
-
-		}
-*/
+		/*
+		 * while (rs.next()) {
+		 * 
+		 * result.setContent(rs.getObject("name"));
+		 * 
+		 * }
+		 */
 		return result;
 	}
+	
+	public ResultSet getResultSet(){
+		return rs;
+	}
+	
 }

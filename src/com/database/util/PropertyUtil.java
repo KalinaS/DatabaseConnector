@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 /**
  * 
  * @author k.stoyanova
  *
  */
 public class PropertyUtil {
-
-	static Logger log = Logger.getLogger(PropertyUtil.class.getName());
 
 	protected static Properties prop = null;
 	private static InputStream input = null;
@@ -34,7 +31,7 @@ public class PropertyUtil {
 			prop.load(input);
 
 		} catch (IOException ex) {
-			log.error("Exception: ", ex);
+			System.out.println(ex.getMessage());
 		} finally {
 			if (input != null) {
 				input.close();

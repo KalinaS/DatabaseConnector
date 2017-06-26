@@ -5,12 +5,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-import org.apache.log4j.BasicConfigurator;
-
 import com.database.connection.ConnectionFactory;
 import com.database.connection.CreateConnection;
 import com.database.connection.DBType;
 import com.database.result.Result;
+import com.database.result.SelectResult;
 
 public abstract class Operation{
 	
@@ -21,7 +20,6 @@ public abstract class Operation{
 	
 	public Operation(DBType dbType) throws SQLException, IOException, ClassNotFoundException{
 		this.dbType = dbType;
-		BasicConfigurator.configure();
 	}
 
 	protected abstract Result executeStatement(String sql, Map<Integer, Object> parameters) throws SQLException, ClassNotFoundException, IOException ;
@@ -34,7 +32,6 @@ public abstract class Operation{
 			
 			openConnection(dbType);
 			result = executeStatement(sql, parameters);
-			//executeStatement(sql, parameters);
 			
 		} catch (SQLException sqlException) {
 			sqlException.printStackTrace();
@@ -66,36 +63,4 @@ public abstract class Operation{
 				}
 			}
 	}
-	
-//	//method for executing queries
-//	public static void doOperation(String sql, Map<String, Object> parameters) throws SQLException{
-//
-//		//int paramIndex = 1;
-//
-//		try {
-//			Statement statement = null;
-//
-//			connection = dbc.getConnection();
-//			statement = connection.createStatement();
-//
-//			/*for (Map.Entry<String, Object> p : parameters.entrySet()) {
-//
-//				updateParams.setString(paramIndex, p.getKey());
-//				updateParams.setObject(paramIndex + 1, p.getValue());
-//				paramIndex++;
-//
-//			}*/
-//			rs = statement.executeQuery(sql);
-//
-//		} catch (SQLException e) {
-//			
-//			log.error(e.getMessage());
-//		}
-//		finally {
-//			
-//			if(updateParams != null){
-//				updateParams.close();
-//			}
-//		}
-//	}
 }

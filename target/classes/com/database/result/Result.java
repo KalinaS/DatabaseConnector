@@ -1,5 +1,8 @@
 package com.database.result;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.database.crud.SqlQuery;
 
 public abstract class Result implements SqlQuery{
@@ -14,4 +17,6 @@ public abstract class Result implements SqlQuery{
 	public String getMessage(){
 		return message;
 	}
+	
+
 }
